@@ -2,10 +2,10 @@ package com.imt.framework.com.Uber.resources;
 
 import com.imt.framework.com.Uber.entities.Plat;
 import com.imt.framework.com.Uber.repository.PlatRepository;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.validation.constraints.NotNull;
+import jakarta.ws.rs.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -18,5 +18,11 @@ public class PlatResources {
     @Produces( value = "application/json")
     public List<Plat> getPlat(){
         return platRepository.findAll();
+    }
+
+    @POST
+    @Consumes( value = "application/json")
+    public void createPlat(@NotNull @RequestBody Plat plat){
+        platRepository.save(plat);
     }
 }
