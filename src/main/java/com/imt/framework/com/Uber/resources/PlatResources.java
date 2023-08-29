@@ -17,9 +17,9 @@ public class PlatResources {
 
     @GET
     @Produces( value = "application/json")
-    public List<Plat> getPlat(@QueryParam("maxPrice")Double maxPrice){
-        if (maxPrice != null){
-            return platRepository.getPlatWithMaxPriceFilter(maxPrice);
+    public List<Plat> getPlat(@QueryParam("maxPrix")Double maxPrix){
+        if (maxPrix != null){
+            return platRepository.getPlatWithMaxPriceFilter(maxPrix);
         }
         return platRepository.findAll();
     }

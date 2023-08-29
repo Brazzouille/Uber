@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 public interface PlatRepository extends  JpaRepository<Plat, Long>{
-    @Query("Select p from Plat p where p.price < :maxPrice")
-    List<Plat> getPlatWithMaxPriceFilter(@Param("maxPrice") double maxPrice);
+    @Query("Select p from Plat p where p.prix < :maxPrix")
+    List<Plat> getPlatWithMaxPriceFilter(@Param("maxPrix") double maxPrix);
 
 }
