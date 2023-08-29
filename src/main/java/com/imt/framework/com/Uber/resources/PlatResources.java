@@ -5,6 +5,7 @@ import com.imt.framework.com.Uber.repository.PlatRepository;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -16,7 +17,10 @@ public class PlatResources {
 
     @GET
     @Produces( value = "application/json")
-    public List<Plat> getPlat(){
+    public List<Plat> getPlat(@QueryParam("maxPrice")Double maxPrice){
+        if (maxPrice != null){
+            return platRepository.getPlatWithMaxPriceFilter(maxPrice);
+        }
         return platRepository.findAll();
     }
 
