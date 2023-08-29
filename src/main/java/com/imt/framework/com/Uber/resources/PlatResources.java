@@ -24,5 +24,6 @@ public class PlatResources {
     @Consumes( value = "application/json")
     public void createPlat(@NotNull @RequestBody Plat plat){
         platRepository.save(plat);
+
     }
 }
