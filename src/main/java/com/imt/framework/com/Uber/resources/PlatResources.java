@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Path("plat")
 public class PlatResources {
@@ -28,5 +29,29 @@ public class PlatResources {
     @Consumes( value = "application/json")
     public void createPlat(@NotNull @RequestBody Plat plat){
         platRepository.save(plat);
+    }
+
+    @PUT
+    @Consumes(value = "application/json")
+    @Path("/{id}")
+    public void updatePlat(@NotNull @PathParam("id") long id, @RequestBody Plat plat) throws Exception{
+        Optional<Plat> searchedPlat = platRepository.findById(id);
+        if (!searchedPlat.isEmpty()){
+            Plat platToUpdate = searchedPlat.get();
+            platToUpdate.setNom(plat.getNom());
+            platToUpdate.setCalories(plat.getCalories());
+            platToUpdate.setChef(plat.getChef());
+            platToUpdate.setDescription(plat.getDescription());
+            platToUpdate.setPrix(plat.getPrix());
+            platRepository.save(platToUpdate);
+        }else {
+            throw new Exception(" plat inconnu");
+        }
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void deletePlat(@NotNull @PathParam("id") long id){
+        platRepository.deleteById(id);
     }
 }
