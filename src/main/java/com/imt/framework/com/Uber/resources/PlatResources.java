@@ -43,6 +43,7 @@ public class PlatResources {
             platToUpdate.setChef(plat.getChef());
             platToUpdate.setDescription(plat.getDescription());
             platToUpdate.setPrix(plat.getPrix());
+            platToUpdate.setCategorie(plat.getCategorie());
             platRepository.save(platToUpdate);
         }else {
             throw new Exception(" plat inconnu");

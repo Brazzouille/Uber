@@ -1,9 +1,6 @@
 package com.imt.framework.com.Uber.entities;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import java.util.Set;
+import jakarta.persistence.*;
 
 @Entity
 public class Plat {
@@ -16,6 +13,9 @@ public class Plat {
 
     @Column(name = "calories")
     private String calories;
+
+    @Column(name = "categorie")
+    private String categorie;
 
     @Column(name = "description")
     private String description;
@@ -72,5 +72,30 @@ public class Plat {
 
     public void setPrix(Double prix) {
         this.prix = prix;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "plat_categorie",
+            joinColumns = @JoinColumn(name = "plat_id"),
+            inverseJoinColumns = @JoinColumn(name = "categorie_id")
+    )
+
+    private Set<Categorie> categories;
+
+    public Set<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Categorie> categories) {
+        this.categories = categories;
     }
 }
