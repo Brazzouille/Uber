@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView } from 'react-native';
+import plats from './Data';  
+import Plat from './Plat';
+import PlatDetails from './PlatDetails';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+function App() {
+    const [selectedPlats, setSelectedPlats] = useState([]);
+    const [selectedPlatDetails, setSelectedPlatDetails] = useState(null);
+
+    const handleSelect = (id) => {
+        setSelectedPlats(prev => [...prev, id]);
+    };
+
+    const handleDetails = (plat) => {
+        setSelectedPlatDetails(plat);
+    };
+
+    return (
+        <ScrollView style={{ flex: 1, padding: 10 }}>
+            {plats.map(plat => (
+                <Plat key={plat.id} plat={plat} onSelect={handleSelect} onDetails={handleDetails} />
+            ))}
+            {selectedPlatDetails && <PlatDetails plat={selectedPlatDetails} />}
+        </ScrollView>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
