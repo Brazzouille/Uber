@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-//import CheckBox from '@react-native-community/checkbox';
-//<CheckBox value={false} onValueChange={() => onSelect(plat.id)} />
-const Plat = ({ plat, onSelect, onDetails }) => (
+
+const Plat = ({ plat, onSelect, onDetails, navigation }) => (
     <View style={{ flexDirection: 'column', margin: 10 }}>
         
-        <TouchableOpacity onPress={() => onDetails(plat)}>
+        <TouchableOpacity onPress={() => {
+            onDetails(plat);
+            navigation.navigate('PlatDetails', { plat: plat });
+        }}>
             <Image source={plat.image} style={{ width: 100, height: 100 }} />
         </TouchableOpacity>
         
