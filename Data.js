@@ -9,7 +9,7 @@ const plats = [
         image: pizzaImage,
         ingredients: ["Sauce tomate", "Fromage"],
         allergenes: ["gluten"],
-        price: 15.99
+        price: 15.99,
     },
     {
         id: 2,

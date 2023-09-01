@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import plats from './Data';  
 import Plat from './Plat';
-import PlatDetails from './PlatDetails';
 
 function Home({ navigation }) {
     const [selectedPlats, setSelectedPlats] = useState([]);
@@ -14,14 +13,23 @@ function Home({ navigation }) {
 
     const handleDetails = (plat) => {
         setSelectedPlatDetails(plat);
+        navigation.navigate('PlatDetails', { plat: plat });  // ajouté pour naviguer vers les détails du plat
     };
 
     return (
         <ScrollView style={{ flex: 1, padding: 10 }}>
             {plats.map(plat => (
-                <Plat key={plat.id} plat={plat} onSelect={handleSelect} onDetails={handleDetails} />
+                <Plat 
+                    key={plat.id} 
+                    plat={plat} 
+                    onSelect={handleSelect} 
+                    onDetails={handleDetails}
+                    navigation={navigation}  // ajouté pour passer la prop 'navigation' à Plat
+                />
             ))}
-            {selectedPlatDetails && <PlatDetails plat={selectedPlatDetails} />}
+            {/* Retiré car nous naviguons désormais vers une nouvelle page pour les détails 
+            {selectedPlatDetails && <PlatDetails plat={selectedPlatDetails} />} 
+            */}
         </ScrollView>
     );
 }
