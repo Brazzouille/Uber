@@ -51,3 +51,5 @@ public class PlatController {
         platRepository.deleteById(id);
     }
 }
+
+//test pour Git
