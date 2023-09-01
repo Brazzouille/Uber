@@ -1,9 +1,9 @@
+/*
 package com.imt.framework.com.Uber.entities;
 import java.util.Set;
 import jakarta.persistence.*;
-
 @Entity
-public class Categorie {
+public class Allergene {
     @Id
     @GeneratedValue
     private Long id;
@@ -11,8 +11,10 @@ public class Categorie {
     @Column(name = "nom")
     private String nom;
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(mappedBy = "allergenes")
     private Set<Plat> plats;
+
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -37,5 +39,7 @@ public class Categorie {
     public void setPlats(Set<Plat> plats) {
         this.plats = plats;
     }
+
 }
 
+*/

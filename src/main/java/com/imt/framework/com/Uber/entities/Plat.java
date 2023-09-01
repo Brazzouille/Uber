@@ -14,9 +14,6 @@ public class Plat {
     @Column(name = "calories")
     private String calories;
 
-    @Column(name = "categorie")
-    private String categorie;
-
     @Column(name = "description")
     private String description;
 
@@ -25,6 +22,14 @@ public class Plat {
 
     @Column(name = "prix")
     private Double prix;
+
+    @Column(name = "origine")
+    private String origine;
+
+    @Column(name = "sante")
+    private String sante;
+
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -74,28 +79,19 @@ public class Plat {
         this.prix = prix;
     }
 
-    public String getCategorie() {
-        return categorie;
+    public String getOrigine() {
+        return origine;
     }
 
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
+    public void setOrigine(String origine) {
+        this.origine = origine;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name = "plat_categorie",
-            joinColumns = @JoinColumn(name = "plat_id"),
-            inverseJoinColumns = @JoinColumn(name = "categorie_id")
-    )
-
-    private Set<Categorie> categories;
-
-    public Set<Categorie> getCategories() {
-        return categories;
+    public String getSante() {
+        return sante;
     }
 
-    public void setCategories(Set<Categorie> categories) {
-        this.categories = categories;
+    public void setSante(String sante) {
+        this.sante = sante;
     }
 }
