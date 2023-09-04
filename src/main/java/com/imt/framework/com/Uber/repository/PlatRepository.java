@@ -13,7 +13,4 @@ public interface PlatRepository extends JpaRepository<Plat, Long>{
     @Query("Select p from Plat p where p.prix < :maxPrix")
     List<Plat> getPlatWithMaxPriceFilter(@Param("maxPrix") double maxPrix);
 
-    @Query("Select p from Plat p where p.prix < :maxPrix")
-    List<Plat> getPlatWithOrigineFilter(@Param("maxPrix") double maxPrix);
-
 }
