@@ -1,12 +1,11 @@
 package com.imt.framework.com.Uber.entities;
-import java.util.Set;
 import jakarta.persistence.*;
 
 @Entity
 public class Plat {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long platId;
 
     @Column(name = "nom")
     private String nom;
@@ -31,12 +30,12 @@ public class Plat {
 
     // Getters and setters
 
-    public Long getId() {
-        return id;
+    public Long getPlatId() {
+        return platId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPlatId(Long id) {
+        this.platId = id;
     }
 
     public String getNom() {
