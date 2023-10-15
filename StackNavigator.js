@@ -6,6 +6,8 @@ import PlatDetails from './PlatDetails';
 import CartIcon from './CartIcon';
 import LoginScreen from './LoginScreen';  
 import ProfileScreen from './ProfileScreen';
+import AddressInput from './AddressInput';  // Assurez-vous d'avoir ce fichier
+import OrderConfirmation from './OrderConfirmation';  // Assurez-vous d'avoir ce fichier
 import { Button } from 'react-native';
 
 const Stack = createStackNavigator();
@@ -49,6 +51,16 @@ function StackNavigator() {
                 name="Profile" 
                 component={ProfileScreen} 
                 options={{ title: 'Profil' }}
+            />
+            <Stack.Screen 
+                name="AddressInput" 
+                component={AddressInput} 
+                options={{ title: 'Adresse de livraison' }}
+            />
+            <Stack.Screen 
+                name="Confirmation" 
+                component={OrderConfirmation} 
+                options={{ title: 'Confirmation de commande' }}
             />
         </Stack.Navigator>
     );
