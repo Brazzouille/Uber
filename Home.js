@@ -13,7 +13,7 @@ function Home({ navigation }) {
 
     const handleDetails = (plat) => {
         setSelectedPlatDetails(plat);
-        navigation.navigate('PlatDetails', { plat: plat });  // ajouté pour naviguer vers les détails du plat
+        navigation.navigate('PlatDetails', { plat: plat });  
     };
 
     return (
@@ -24,7 +24,7 @@ function Home({ navigation }) {
                     plat={plat} 
                     onSelect={handleSelect} 
                     onDetails={handleDetails}
-                    navigation={navigation}  // ajouté pour passer la prop 'navigation' à Plat
+                    navigation={navigation}  
                 />
             ))}
             {/* Retiré car nous naviguons désormais vers une nouvelle page pour les détails 

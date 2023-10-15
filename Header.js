@@ -10,7 +10,7 @@ const Header = ({ title, onCartPress }) => {
         <View style={styles.header}>
             <Text style={styles.title}>{title}</Text>
             <TouchableOpacity onPress={onCartPress}>
-                <Text style={styles.cart}>🛒</Text>  {/* Ceci est un emoji de caddie */}
+                <Text style={styles.cart}>🛒</Text>  {/* emoji de caddie */}
             </TouchableOpacity>
         </View>
     );
