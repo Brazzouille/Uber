@@ -4,18 +4,25 @@ import Home from './Home';
 import CartScreen from './CartScreen';
 import PlatDetails from './PlatDetails';
 import CartIcon from './CartIcon';
+import LoginScreen from './LoginScreen';  // Ajoutez cette ligne
 
 const Stack = createStackNavigator();
 
 function StackNavigator() {
     return (
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Login">  
+            <Stack.Screen 
+                name="Login" 
+                component={LoginScreen} 
+                options={{ title: 'Connexion' }}
+            />
             <Stack.Screen 
                 name="Home" 
                 component={Home} 
                 options={{ 
                     title: 'DeliveCrous', 
-                    headerRight: () => <CartIcon />
+                    headerRight: () => <CartIcon />,
+                    headerLeft: null 
                 }}
             />
             <Stack.Screen 

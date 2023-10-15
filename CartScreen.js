@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 20,
     }
+    
 });
 
 export default CartScreen;
