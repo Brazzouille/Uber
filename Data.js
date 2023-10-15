@@ -1,4 +1,3 @@
-// Import des images
 import pizzaImage from './assets/images/pizza.jpg';
 import patesImage from './assets/images/pates.jpg';
 
@@ -10,6 +9,7 @@ const plats = [
         ingredients: ["Sauce tomate", "Fromage"],
         allergenes: ["gluten"],
         price: 15.99,
+        category: "végétarien"
     },
     {
         id: 2,
@@ -17,7 +17,8 @@ const plats = [
         image: patesImage,
         ingredients: ["Sauce tomate", "Basilic"],
         allergenes: ["gluten"],
-        price: 11.99
+        price: 11.99,
+        category: "végétarien"
     },
 ];
 

@@ -4,10 +4,11 @@ import { View, TextInput, Button, StyleSheet } from 'react-native';
 function LoginScreen({ navigation }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
     const handleLogin = () => {
         navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
+            index: 0,
+            routes: [{ name: 'Home', params: { userId: username, password: password } }],
         });
     };
 

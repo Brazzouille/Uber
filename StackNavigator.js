@@ -4,7 +4,9 @@ import Home from './Home';
 import CartScreen from './CartScreen';
 import PlatDetails from './PlatDetails';
 import CartIcon from './CartIcon';
-import LoginScreen from './LoginScreen';  // Ajoutez cette ligne
+import LoginScreen from './LoginScreen';  
+import ProfileScreen from './ProfileScreen';
+import { Button } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -19,11 +21,19 @@ function StackNavigator() {
             <Stack.Screen 
                 name="Home" 
                 component={Home} 
-                options={{ 
+                options={({ route, navigation }) => ({
                     title: 'DeliveCrous', 
                     headerRight: () => <CartIcon />,
-                    headerLeft: null 
-                }}
+                    headerLeft: () => (
+                        <Button 
+                            title="👤" 
+                            onPress={() => navigation.navigate('Profile', {
+                                userId: route.params?.userId || 'VotreIdentifiant',
+                                password: route.params?.password || 'VotreMotDePasse',
+                            })}
+                        />
+                    ),
+                })}
             />
             <Stack.Screen 
                 name="Cart" 
@@ -34,6 +44,11 @@ function StackNavigator() {
                 name="PlatDetails" 
                 component={PlatDetails} 
                 options={{ title: 'Détails du plat' }}
+            />
+            <Stack.Screen 
+                name="Profile" 
+                component={ProfileScreen} 
+                options={{ title: 'Profil' }}
             />
         </Stack.Navigator>
     );
