@@ -1,4 +1,4 @@
-package com.imt.framework.com.Uber.entities;
+package com.imt.framework.com.Uber.model;
 
 import jakarta.persistence.Enumerated;
 
@@ -15,11 +15,20 @@ public class Commande {
 
     private LocalDateTime dateMaj;
 
-
     @Enumerated(EnumType.STRING)
     private Status status;
 
     private Long userid;
+
+    private String adresse;
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
     enum Status {
         EN_ATTENTE,

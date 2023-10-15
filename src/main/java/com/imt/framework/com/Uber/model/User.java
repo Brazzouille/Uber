@@ -1,4 +1,4 @@
-package com.imt.framework.com.Uber.entities;
+package com.imt.framework.com.Uber.model;
 
 import jakarta.persistence.*;
 

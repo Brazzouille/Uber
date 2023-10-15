@@ -1,7 +1,12 @@
-package com.imt.framework.com.Uber.entities;
+package com.imt.framework.com.Uber.model;
+
+import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 
+// Composite key for CommandePlat
+
+@Embeddable
 public class CommandePlatId implements Serializable {
     private Long platId;
     private Long cmdId;

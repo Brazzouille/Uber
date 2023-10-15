@@ -1,4 +1,4 @@
-package com.imt.framework.com.Uber.entities;
+package com.imt.framework.com.Uber.model;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,26 +7,21 @@ public class Plat {
     @GeneratedValue
     private Long platId;
 
-    @Column(name = "nom")
     private String nom;
 
-    @Column(name = "calories")
     private String calories;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "chef")
     private String chef;
 
-    @Column(name = "prix")
     private Double prix;
 
-    @Column(name = "origine")
     private String origine;
 
-    @Column(name = "sante")
     private String sante;
+
+    private String image;
 
     // Getters and setters
 
@@ -92,5 +87,13 @@ public class Plat {
 
     public void setSante(String sante) {
         this.sante = sante;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

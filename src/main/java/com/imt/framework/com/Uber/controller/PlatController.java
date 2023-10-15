@@ -1,40 +1,35 @@
-package com.imt.framework.com.Uber.resources;
+package com.imt.framework.com.Uber.controller;
 
-import com.imt.framework.com.Uber.entities.Plat;
+import com.imt.framework.com.Uber.model.Plat;
 import com.imt.framework.com.Uber.repository.PlatRepository;
-import jakarta.validation.constraints.NotNull;
-import jakarta.ws.rs.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Path("plat")
-public class PlatResources {
+@RestController
+@RequestMapping("plat")
+public class PlatController {
     @Autowired
     private PlatRepository platRepository;
 
-    @GET
-    @Produces( value = "application/json")
-    public List<Plat> getPlat(@QueryParam("maxPrix")Double maxPrix){
+    @GetMapping
+    public List<Plat> getPlat(@RequestParam("maxPrix")Double maxPrix){
         if (maxPrix != null){
             return platRepository.getPlatWithMaxPriceFilter(maxPrix);
         }
         return platRepository.findAll();
     }
 
-    @POST
-    @Consumes( value = "application/json")
-    public void createPlat(@NotNull @RequestBody Plat plat){
+    @PostMapping
+    public void createPlat(@RequestBody Plat plat){
         platRepository.save(plat);
     }
 
-    @PUT
-    @Consumes(value = "application/json")
-    @Path("/{id}")
-    public void updatePlat(@NotNull @PathParam("id") long id, @RequestBody Plat plat) throws Exception{
+    @PutMapping("/{platId}")
+    public void updatePlat(@PathVariable("platId") long id, @RequestBody Plat plat) throws Exception{
         Optional<Plat> searchedPlat = platRepository.findById(id);
         if (!searchedPlat.isEmpty()){
             Plat platToUpdate = searchedPlat.get();
@@ -51,9 +46,8 @@ public class PlatResources {
         }
     }
 
-    @DELETE
-    @Path("/{id}")
-    public void deletePlat(@NotNull @PathParam("id") long id){
+    @DeleteMapping("/{platId}")
+    public void deletePlat(@PathVariable("platId") long id){
         platRepository.deleteById(id);
     }
 }
