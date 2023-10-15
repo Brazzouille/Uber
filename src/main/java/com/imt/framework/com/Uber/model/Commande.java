@@ -3,9 +3,16 @@ package com.imt.framework.com.Uber.model;
 import jakarta.persistence.Enumerated;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,44 +29,10 @@ public class Commande {
 
     private String adresse;
 
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
     enum Status {
         EN_ATTENTE,
         EN_COURS,
         TERMINE,
         ANNULE
     }
-
-    public Long getCmdId() {
-        return cmdId;
-    }
-
-    public void setCmdId(Long cmdId) {
-        this.cmdId = cmdId;
-    }
-
-    public LocalDateTime getDateCree() {
-        return dateCree;
-    }
-
-    public void setDateCree(LocalDateTime dateCree) {
-        this.dateCree = dateCree;
-    }
-
-    public LocalDateTime getDateMaj() {
-        return dateMaj;
-    }
-
-    public void setDateMaj(LocalDateTime dateMaj) {
-        this.dateMaj = dateMaj;
-    }
-
-
 }
