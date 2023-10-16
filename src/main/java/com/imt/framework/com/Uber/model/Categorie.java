@@ -1,35 +1,23 @@
 package com.imt.framework.com.Uber.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Categorie {
     @Id
-    private String nom;
+    @GeneratedValue
+    private long idCat;
+
+    private String nomCat;
     private String description;
-
-    public Categorie(String nom, String description) {
-        this.nom = nom;
-        this.description = description;
-    }
-
-    public Categorie() {
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    private String imageCat;
 }
+
