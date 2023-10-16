@@ -39,4 +39,17 @@ public class UserServices {
         }
     }
 
+    public void rechargerCarte(String email, String password, Double amount) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
+            if (user.get().getPassword().equals(password)) {
+                user.get().setCrousCardBalance(user.get().getCrousCardBalance() + amount);
+                userRepository.save(user.get());
+            } else {
+                System.out.println("Le mot de passe est incorrect");
+            }
+        } else {
+            System.out.println("Le compte n'existe pas, veuillez créer un compte");
+        }
+    }
 }

@@ -21,4 +21,9 @@ public class UserController {
     private boolean signIn(@RequestBody SignInDto signInDto) {
         return userServices.signIn(signInDto.getEmail(), signInDto.getPassword());
     }
+
+    @PostMapping("/recharger-carte")
+    private void rechargerCarte(@RequestBody SignInDto signInDto, @RequestParam Double amount) {
+        userServices.rechargerCarte(signInDto.getEmail(), signInDto.getPassword(),amount);
+    }
 }

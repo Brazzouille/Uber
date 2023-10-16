@@ -32,13 +32,13 @@ public class Commande {
 
     private String adresse;
 
-    //@OneToMany(mappedBy = "idCmdPlat.commande",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    //private List<Plat> commandePlats;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cmdId")
+    private List<CommandePlat> commandePlats;
 
+    private Double prixTotal;
 
-
-    enum Status {
-        EN_ATTENTE,
+    public enum Status {
         EN_COURS,
         TERMINE,
         ANNULE

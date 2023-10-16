@@ -11,8 +11,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommandePlat {
-    @EmbeddedId
-    private CommandePlatId idCmdPlat;
+    @Id
+    @GeneratedValue
+    private Long idCmdPlat;
+
+    @ManyToOne
+    @JoinColumn(name = "platId")
+    private Plat plat;
+
+    @ManyToOne
+    @JoinColumn(name = "cmdId")
+    private Commande commande;
 
     @Column(nullable = false)
     private double prix;
