@@ -1,36 +1,27 @@
 package com.imt.framework.com.Uber.model;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 // Composite key for CommandePlat
 
 @Embeddable
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CommandePlatId implements Serializable {
-    private Long platId;
-    private Long cmdId;
+    @ManyToOne
+    @JoinColumn(name = "cmdId")
+    private Commande commande;
 
-    public CommandePlatId() {}
+    @ManyToOne
+    @JoinColumn(name = "platId")
+    private Plat plat;
 
-    public CommandePlatId(Long platId, Long cmdId) {
-        this.platId = platId;
-        this.cmdId = cmdId;
-    }
-
-    public Long getPlatId() {
-        return platId;
-    }
-
-    public void setPlatId(Long platId) {
-        this.platId = platId;
-    }
-
-    public Long getCmdId() {
-        return cmdId;
-    }
-
-    public void setCmdId(Long cmdId) {
-        this.cmdId = cmdId;
-    }
 }

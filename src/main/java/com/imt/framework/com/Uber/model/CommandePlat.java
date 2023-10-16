@@ -14,17 +14,10 @@ public class CommandePlat {
     @EmbeddedId
     private CommandePlatId idCmdPlat;
 
-    @ManyToOne
-    @MapsId("cmdId")
-    @JoinColumn(name = "cmdId")
-    private Commande commande;
-
-    @ManyToOne
-    @MapsId("platId")
-    @JoinColumn(name = "platId")
-    private Plat plat;
-
+    @Column(nullable = false)
     private double prix;
+
+    @Column(nullable = false)
     private int quantite;
 
 }

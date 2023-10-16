@@ -26,7 +26,9 @@ public class Commande {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    private Long userid;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
     private String adresse;
 
