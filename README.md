@@ -1,6 +1,6 @@
 # Uber
 
-GET : http://localhost:8080/uber/plat 
+GET : http://localhost:8080/uber/plat
 POST : http://localhost:8080/uber/plat 
 exemple : 
 {
