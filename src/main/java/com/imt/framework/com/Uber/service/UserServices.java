@@ -14,13 +14,19 @@ public class UserServices {
     UserRepository userRepository;
 
     public void createUser(String email, String firstName, String lastName, String password) {
-        User user = new User();
-        user.setEmail(email);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setPassword(password);
-        user.setCrousCardBalance(0.0);
-        userRepository.save(user);
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
+            throw new RuntimeException("Le compte existe déjà");
+        }else{
+            User newUser = new User();
+            newUser.setEmail(email);
+            newUser.setFirstName(firstName);
+            newUser.setLastName(lastName);
+            newUser.setPassword(password);
+            newUser.setCrousCardBalance(0.0);
+            userRepository.save(newUser);
+            System.out.println("Le compte a été créé");
+        }
     }
 
     public boolean signIn(String email, String password) {
