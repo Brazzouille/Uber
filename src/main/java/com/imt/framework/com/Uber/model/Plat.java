@@ -1,5 +1,9 @@
 package com.imt.framework.com.Uber.model;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.*;
 
 import java.util.HashSet;
@@ -14,6 +18,7 @@ public class Plat {
     @GeneratedValue
     private Long platId;
 
+    @NotNull(message = "Le nom du plat est requis.")
     private String nom;
 
     private String calories;

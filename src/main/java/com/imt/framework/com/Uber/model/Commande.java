@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,6 +29,11 @@ public class Commande {
     private Long userid;
 
     private String adresse;
+
+    //@OneToMany(mappedBy = "idCmdPlat.commande",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    //private List<Plat> commandePlats;
+
+
 
     enum Status {
         EN_ATTENTE,

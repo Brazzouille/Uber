@@ -1,5 +1,6 @@
 package com.imt.framework.com.Uber.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommandePlat {
     @EmbeddedId
-    private CommandePlatId id;
+    private CommandePlatId idCmdPlat;
 
     @ManyToOne
     @MapsId("cmdId")
