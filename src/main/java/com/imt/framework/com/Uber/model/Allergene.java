@@ -1,8 +1,10 @@
-package com.imt.framework.com.Uber.entities;
+package com.imt.framework.com.Uber.model;
 
 import java.util.Set;
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 public class Allergene {
     @Id
@@ -13,16 +15,8 @@ public class Allergene {
 
     // Constructeurs, getters, setters
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
     }
 
     public void setNom(String nom) {

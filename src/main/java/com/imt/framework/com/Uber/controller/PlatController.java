@@ -33,6 +33,7 @@ public class PlatController {
         Optional<Plat> searchedPlat = platRepository.findById(id);
         if (!searchedPlat.isEmpty()){
             Plat platToUpdate = searchedPlat.get();
+
             platToUpdate.setNom(plat.getNom());
             platToUpdate.setCalories(plat.getCalories());
             platToUpdate.setChef(plat.getChef());
@@ -40,6 +41,7 @@ public class PlatController {
             platToUpdate.setPrix(plat.getPrix());
             platToUpdate.setOrigine(plat.getOrigine());
             platToUpdate.setSante(plat.getSante());
+            platToUpdate.setCategorie(plat.getCategorie());
             platRepository.save(platToUpdate);
         }else {
             throw new Exception(" plat inconnu");

@@ -1,8 +1,6 @@
 package com.imt.framework.com.Uber.model;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
@@ -28,4 +26,6 @@ public class Plat {
     private String sante;
 
     private String image;
+
+    private String categorie;
 }
