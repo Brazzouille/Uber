@@ -3,6 +3,7 @@ package com.imt.framework.com.Uber.model;
 import jakarta.persistence.Enumerated;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ public class Commande {
     @JoinColumn(name = "userId")
     private User user;
 
+    @NotNull(message = "L'adresse est requise.")
     private String adresse;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -40,7 +42,6 @@ public class Commande {
 
     public enum Status {
         EN_COURS,
-        TERMINE,
-        ANNULE
+        TERMINEE
     }
 }

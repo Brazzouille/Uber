@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CommandeRepository extends JpaRepository<Commande, Long> {
-    List<Commande> findAllByUserOrderByDateCreeDesc(User user);
+
+    List<Commande> findAllByUserAndStatusOrderByDateCreeDesc(User user, Commande.Status status);
 }

@@ -25,4 +25,6 @@ public class User {
 
     private Double crousCardBalance;
 
+    private String adressePrincipale;
+
 }

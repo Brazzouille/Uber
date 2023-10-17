@@ -29,7 +29,7 @@ public class CommandeService {
     private PlatRepository platRepository;
 
     @Transactional
-    public Commande createCommande(Long userId, List<CommandePlatDto> commandePlatsDto){
+    public Commande createCommande(Long userId, List<CommandePlatDto> commandePlatsDto,String adresse){
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur non trouvée"));
 
         double prixTotal = commandePlatsDto.stream()
@@ -51,6 +51,7 @@ public class CommandeService {
         commande.setDateCree(LocalDateTime.now());
         commande.setDateMaj(LocalDateTime.now());
         commande.setPrixTotal(prixTotal);
+        commande.setAdresse(adresse);
         List<CommandePlat> commandePlats = new ArrayList<>();
 
         commandePlatsDto.forEach(dto -> {
@@ -64,5 +65,23 @@ public class CommandeService {
 
         commande.setCommandePlats(commandePlats);
         return commandeRepository.save(commande);
+    }
+
+    public Commande commandeRecuperee (Long commandeId){
+        Commande commande = commandeRepository.findById(commandeId).orElseThrow(() -> new RuntimeException("Commande non trouvée"));
+        commande.setStatus(Commande.Status.TERMINEE);
+        commande.setDateMaj(LocalDateTime.now());
+        commandeRepository.save(commande);
+        return commande;
+    }
+
+    public List<Commande> afficherCommandeTerminee(Long userId){
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur non trouvée"));
+        return commandeRepository.findAllByUserAndStatusOrderByDateCreeDesc(user, Commande.Status.TERMINEE);
+    }
+
+    public List<Commande> afficherCommandeEnCours(Long userId){
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur non trouvée"));
+        return commandeRepository.findAllByUserAndStatusOrderByDateCreeDesc(user, Commande.Status.EN_COURS);
     }
 }
