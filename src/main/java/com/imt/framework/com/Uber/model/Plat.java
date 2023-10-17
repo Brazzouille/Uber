@@ -35,7 +35,14 @@ public class Plat {
 
     private String image;
 
+    @Enumerated(EnumType.STRING)
     private String categorie;
+
+    public enum Categorie {
+        ENTREE,
+        PLAT,
+        DESSERT
+    }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
