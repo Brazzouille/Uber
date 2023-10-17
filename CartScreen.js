@@ -51,7 +51,7 @@ function CartScreen({ navigation }) {
                 )}
             />
             <Text style={styles.total}>Total : {calculateTotal()}€</Text>
-            {cart.length > 0 && (  // On affiche le bouton seulement si le panier n'est pas vide
+            {cart.length > 0 && (  
                 <Button 
                     title="Valider le panier" 
                     onPress={() => navigation.navigate('AddressInput')}

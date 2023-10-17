@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './StackNavigator';
-import { CartProvider } from './CartContext';  // Assurez-vous que le chemin d'importation est correct
+import { CartProvider } from './CartContext';  
 
 function App() {
     return (

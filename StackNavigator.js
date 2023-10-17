@@ -6,8 +6,8 @@ import PlatDetails from './PlatDetails';
 import CartIcon from './CartIcon';
 import LoginScreen from './LoginScreen';  
 import ProfileScreen from './ProfileScreen';
-import AddressInput from './AddressInput';  // Assurez-vous d'avoir ce fichier
-import OrderConfirmation from './OrderConfirmation';  // Assurez-vous d'avoir ce fichier
+import AddressInput from './AddressInput';  
+import OrderConfirmation from './OrderConfirmation';  
 import { Button } from 'react-native';
 
 const Stack = createStackNavigator();

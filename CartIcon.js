@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { CartContext } from './CartContext'; // Assurez-vous que le chemin d'importation est correct
+import { CartContext } from './CartContext'; 
 
 function CartIcon() {
     const navigation = useNavigation();
