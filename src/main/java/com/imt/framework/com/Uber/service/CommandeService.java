@@ -45,6 +45,8 @@ public class CommandeService {
             throw new RuntimeException("La solde de carte Crous est insuffisante");
         }
 
+        user.setCrousCardBalance(user.getCrousCardBalance() - prixTotal);
+
         Commande commande = new Commande();
         commande.setUser(user);
         commande.setStatus(Commande.Status.EN_COURS);
