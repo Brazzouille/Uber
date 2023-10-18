@@ -39,8 +39,8 @@ public class AllergeneController {
     }
 
     @DeleteMapping("/{allergeneId}")
-    public void deleteAllergene(@PathVariable("allergeneId") long id){
-        allergeneRepository.deleteById(id);
+    public void deleteAllergene(@PathVariable("allergeneId") long allergeneId){
+        allergeneRepository.deleteById(allergeneId);
     }
 }
 

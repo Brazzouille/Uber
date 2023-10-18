@@ -1,13 +1,16 @@
 package com.imt.framework.com.Uber.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Enumerated;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,14 +28,21 @@ public class Commande {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    private Long userid;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
+    @NotNull(message = "L'adresse est requise.")
     private String adresse;
 
-    enum Status {
-        EN_ATTENTE,
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cmdId")
+    private List<CommandePlat> commandePlats;
+
+    private Double prixTotal;
+
+    public enum Status {
         EN_COURS,
-        TERMINE,
-        ANNULE
+        TERMINEE
     }
 }

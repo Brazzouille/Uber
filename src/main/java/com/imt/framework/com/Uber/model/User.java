@@ -13,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Long userId;
+    private int userId;
 
     private String firstName;
 
@@ -24,5 +24,7 @@ public class User {
     private String password;
 
     private Double crousCardBalance;
+
+    private String adressePrincipale;
 
 }

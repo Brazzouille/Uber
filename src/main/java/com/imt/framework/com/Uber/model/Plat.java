@@ -1,8 +1,13 @@
 package com.imt.framework.com.Uber.model;
 import jakarta.persistence.*;
-import lombok.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,6 +19,7 @@ public class Plat {
     @GeneratedValue
     private Long platId;
 
+    @NotNull(message = "Le nom du plat est requis.")
     private String nom;
 
     private String calories;
@@ -30,12 +36,17 @@ public class Plat {
 
     private String image;
 
-    private String categorie;
+    @Enumerated(EnumType.STRING)
+    private Categorie categorie;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "plat_allergene",
-            joinColumns = @JoinColumn(name = "plat_id"),
-            inverseJoinColumns = @JoinColumn(name = "allergene_id"))
-    private Set<Allergene> allergenes = new HashSet<>();
+    public enum Categorie {
+        ENTREE,
+        PLAT,
+        DESSERT
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "plat_id")
+    private Set<Allergene> allergenes;
+
 }
