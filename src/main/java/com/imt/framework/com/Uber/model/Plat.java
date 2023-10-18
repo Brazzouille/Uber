@@ -4,9 +4,10 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.*;
+
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,7 +37,7 @@ public class Plat {
     private String image;
 
     @Enumerated(EnumType.STRING)
-    private String categorie;
+    private Categorie categorie;
 
     public enum Categorie {
         ENTREE,
@@ -44,10 +45,8 @@ public class Plat {
         DESSERT
     }
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "plat_allergene",
-            joinColumns = @JoinColumn(name = "plat_id"),
-            inverseJoinColumns = @JoinColumn(name = "allergene_id"))
-    private Set<Allergene> allergenes = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "plat_id")
+    private Set<Allergene> allergenes;
+
 }

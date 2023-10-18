@@ -2,24 +2,19 @@ package com.imt.framework.com.Uber.model;
 
 import java.util.Set;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Getter
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Allergene {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long allergeneId;
 
     private String nom;
-
-    // Constructeurs, getters, setters
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 }
