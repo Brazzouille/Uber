@@ -1,5 +1,6 @@
 package com.imt.framework.com.Uber.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Enumerated;
 
 import jakarta.persistence.*;

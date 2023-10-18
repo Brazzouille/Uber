@@ -86,4 +86,5 @@ public class CommandeService {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur non trouvée"));
         return commandeRepository.findAllByUserAndStatusOrderByDateCreeDesc(user, Commande.Status.EN_COURS);
     }
+
 }
