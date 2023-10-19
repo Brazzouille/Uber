@@ -1,29 +1,46 @@
 # Uber
 
+# Backend pour Application Style-UberEat
+
+## Description
+
+Ce backend est conçu pour une application de livraison similaire à UberEat. Il est construit avec Spring Boot et utilise JPA/Hibernate pour la persistance de données, H2 comme base de données en mémoire.
+
+## Prérequis
+
+- Java 17
+- Maven
+
+## Dépendances principales
+
+- Spring Boot Starter Data JPA
+- Spring Boot Starter Web
+- H2 Database
+- Springdoc OpenAPI (pour la documentation API)
+- Lombok (pour réduire le boilerplate code)
+- JetBrains Annotations
+
 ## Installation
 
-## KAUBAN
-https://trello.com/b/qcPbbMBO/uber
+1. Clonez le dépôt dans votre environnement local avec `git clone <url_du_dépôt>`.
+2. Accédez au dossier du projet avec `cd chemin_vers_le_projet`.
+3. Exécutez `mvn install` pour installer les dépendances du projet.
 
-GET : http://localhost:8080/uber/plat
-POST : http://localhost:8080/uber/plat 
-exemple : 
-{
-"nom": "Grec",
-"calories": "700",
-"description": "Petit plat Marocain",
-"chef": "Phillipe",
-"prix": 6.0
-}
+## Démarrage de l'application
 
-DELETE : http://localhost:8080/uber/plat/1
+Exécutez la commande `mvn spring-boot:run` dans le répertoire racine du projet pour démarrer l'application. Par défaut, elle sera lancée sur `http://localhost:8080`.
 
-PUT : http://localhost:8080/uber/plat/303
-exemple :
-{
-"nom": "Durum",
-"calories": "600",
-"description": "Gros plat Marocain",
-"chef": "Phillipe Ete",
-"prix": 9.0
-}
+## Documentation API
+
+Une fois l'application lancée, vous pouvez accéder à la documentation et à l'interface utilisateur de Swagger en visitant `http://localhost:8080/swagger-ui.html`.
+
+## Console H2
+http://localhost:8080/h2
+username=uber
+password=password!
+
+## Tests
+
+Pour exécuter les tests, utilisez la commande `mvn test`. Cela lancera les tests unitaires et d'intégration configurés dans le projet.
+
+
