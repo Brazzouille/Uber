@@ -1,5 +1,3 @@
-# Uber
-
 # Backend pour Application Style-UberEat
 
 ## Description
