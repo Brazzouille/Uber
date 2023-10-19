@@ -40,9 +40,8 @@ public class Plat {
     private Categorie categorie;
 
     public enum Categorie {
-        ENTREE,
-        PLAT,
-        DESSERT
+        VIANDE,
+        VEGAN
     }
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
