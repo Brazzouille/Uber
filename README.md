@@ -33,8 +33,8 @@ Exécutez la commande `mvn spring-boot:run` dans le répertoire racine du projet
 Une fois l'application lancée, vous pouvez accéder à la documentation et à l'interface utilisateur de Swagger en visitant `http://localhost:8080/swagger-ui.html`.
 
 ## Console H2
-http://localhost:8080/h2
-username=uber
+http://localhost:8080/h2  
+username=uber  
 password=password!
 
 ## Tests
