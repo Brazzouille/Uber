@@ -2,7 +2,7 @@
 
 ## Description
 
-Ce backend est conçu pour une application de livraison similaire à UberEat. Il est construit avec Spring Boot et utilise JPA/Hibernate pour la persistance de données, H2 comme base de données en mémoire.
+Ce backend est conçu pour une application de livraison similaire à UberEat. Il est construit avec Spring Boot et utilise JPA/Hibernate pour la persistance de données, H2 comme base de données dans un fichier.
 
 ## Prérequis
 
