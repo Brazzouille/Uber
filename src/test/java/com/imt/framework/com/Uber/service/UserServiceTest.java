@@ -24,14 +24,14 @@ public class UserServiceTest {
     @InjectMocks
     private UserServices userServices;
 
-    private User existingUser;
+    private User user;
 
     @BeforeEach
     void setUp() {
-        existingUser = new User();
-        existingUser.setEmail("existing@example.com");
-        existingUser.setPassword("correctpassword");
-        existingUser.setCrousCardBalance(10.0);
+        user = new User();
+        user.setEmail("existing@example.com");
+        user.setPassword("correctpassword");
+        user.setCrousCardBalance(10.0);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class UserServiceTest {
 
     @Test
     void whenCreateUserWithExistingEmailThenException() {
-        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(existingUser));
+        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(user));
 
         Exception exception = assertThrows(RuntimeException.class, () -> {
             userServices.createUser("existing@example.com", "Existing", "User", "password");
@@ -56,7 +56,7 @@ public class UserServiceTest {
 
     @Test
     void givenValidCredentialsWhenSignInThenSuccess() {
-        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(existingUser));
+        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(user));
 
         boolean isLoggedIn = userServices.signIn("existing@example.com", "correctpassword");
 
@@ -65,7 +65,7 @@ public class UserServiceTest {
 
     @Test
     void givenInvalidPasswordWhenSignInThenFail() {
-        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(existingUser));
+        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(user));
 
         boolean isLoggedIn = userServices.signIn("existing@example.com", "wrongpassword");
 
@@ -83,21 +83,21 @@ public class UserServiceTest {
 
     @Test
     void givenValidCredentialsAndAmountWhenRechargerCarteThenSuccess() {
-        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(existingUser));
+        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(user));
 
         userServices.rechargerCarte("existing@example.com", "correctpassword", 20.0);
 
-        assertEquals(30.0, existingUser.getCrousCardBalance());
+        assertEquals(30.0, user.getCrousCardBalance());
         verify(userRepository, times(1)).save(any(User.class));
     }
 
     @Test
     void givenInvalidPasswordWhenRechargerCarteThenFail() {
-        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(existingUser));
+        when(userRepository.findByEmail("existing@example.com")).thenReturn(Optional.of(user));
 
         userServices.rechargerCarte("existing@example.com", "wrongpassword", 20.0);
 
-        assertEquals(10.0, existingUser.getCrousCardBalance());
+        assertEquals(10.0, user.getCrousCardBalance());
         verify(userRepository, times(0)).save(any(User.class)); // Ensure no save operation was called
     }
 

@@ -59,8 +59,8 @@ public class CommandeServiceTest {
         commandeTerminee = new Commande();
         commandeTerminee.setStatus(Commande.Status.TERMINEE);
 
-        commandeEnCours = new Commande();
         commandeEnCours.setStatus(Commande.Status.EN_COURS);
+        commandeEnCours = new Commande();
     }
 
     @Test
